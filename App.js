@@ -1,14 +1,18 @@
 import React, {Component} from 'react';
-import { StyleSheet, View} from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 import HomePage from './src/containers/homePage';
+import Header from './src/components/Header';
+import Navbar from './src/components/Navbar';
 
 
 export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <Header />
         <HomePage />
+        <Navbar />
       </View>
     );
   }
@@ -16,9 +20,7 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    height: '100%',
+    width: '100%'
   }
-});
+})
