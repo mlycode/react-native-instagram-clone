@@ -18,6 +18,6 @@ const styles = StyleSheet.create({
     layout: {
         flexDirection: "row",
         flex: 1,
-        backgroundColor: 'orangered'
+        backgroundColor: '#FAFAFA'
     }
 })
