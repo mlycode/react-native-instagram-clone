@@ -1,13 +1,67 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
 
+import UserPost from '../components/UserPost';
+import testImage from "../assets/images/testimage.jpg";
+import profileImage from "../assets/images/profileimage.jpg";
 
 export default class HomePage extends Component {
+    state = {
+        posts: [
+            {
+                username: 'ozzy_dl',
+                profileImage: profileImage,
+                key: 'id1',
+                location: 'London, United Kingdom',
+                picture: testImage,
+                comment: 'First trip to New York!',
+                timePosted: '5 hours ago'
+            },
+            {
+                username: 'therageart',
+                profileImage: profileImage,
+                key: 'id2',
+                location: 'London, United Kingdom',
+                picture: testImage,
+                comment: 'First trip to New York!',
+                timePosted: '5 hours ago'
+            },
+            {
+                username: 'michaelmly',
+                profileImage: profileImage,
+                key: 'id3',
+                location: 'London, United Kingdom',
+                picture: testImage,
+                comment: 'First trip to New York!',
+                timePosted: '5 hours ago'
+            },
+            {
+                username: 'subwaydude_',
+                profileImage: profileImage,
+                key: 'id4',
+                location: 'London, United Kingdom',
+                picture: testImage,
+                comment: 'First trip to New York!',
+                timePosted: '5 hours ago'
+            }
+        ]
+    }
 
     render() {
         return (
             <View style={styles.container}>
-                <Text>homePage</Text>
+                <FlatList
+                    data={this.state.posts}
+                    renderItem={({ item }) => (
+                        <UserPost
+                            username={item.username}
+                            profileImage={profileImage}
+                            location={item.location}
+                            picture={item.picture}
+                            comment={item.comment}
+                            timePosted={item.timePosted} />
+                    )}
+                />
             </View>
         );
     }
@@ -16,6 +70,6 @@ export default class HomePage extends Component {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#FFFFFF',
-        flex: 10
+        flex: 12
     }
 })
