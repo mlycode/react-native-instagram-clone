@@ -44,7 +44,11 @@ export default class HomePage extends Component {
                 comment: 'First trip to New York!',
                 timePosted: '5 hours ago'
             }
-        ]
+        ],
+        user: {
+            username: 'michaelmly',
+            profileImage: profileImage
+        }
     }
 
     render() {
@@ -59,7 +63,8 @@ export default class HomePage extends Component {
                             location={item.location}
                             picture={item.picture}
                             comment={item.comment}
-                            timePosted={item.timePosted} />
+                            timePosted={item.timePosted}
+                            addCommentImage={this.state.user.profileImage} />
                     )}
                 />
             </View>

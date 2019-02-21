@@ -1,33 +1,67 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, Image, TextInput } from 'react-native';
+
+import menuIcon from '../assets/icons/menu.png';
+import liked from '../assets/icons/liked.png';
+import comment from "../assets/icons/comment.png";
+import mail from "../assets/icons/mail.png";
+import bookmark from "../assets/icons/bookmark.png";
 
 const UserPost = (props) => {
     return (
         <View style={styles.container}>
 
             <View style={styles.heading}>
-                <Text>{props.username}</Text>
+                <View style={styles.profileImageContainer}>
+                    <Image style={styles.profileImage} source={props.profileImage} />
+                </View>
+                <View style={styles.headingText}>
+                    <Text style={styles.headingUsername}>{props.username}</Text>
+                    <Text style={styles.headingLocation}>{props.location}</Text>
+                </View>
+                <Image style={styles.menuIcon} source={menuIcon} />
             </View>
 
             <View style={styles.imageContainer}>
-                <Text>Image</Text>
+                <Image style={styles.image} source={props.picture} />
             </View>
 
-            <View style={styles.likes}>
-                <Text>Likes</Text>
+            <View style={styles.imageFooter}>
+                <Image style={styles.imageFooterIcon} source={liked} />
+                <Image style={styles.imageFooterIcon} source={comment} />
+                <Image style={styles.imageFooterIcon} source={mail} />
+                <Image style={[styles.imageFooterIcon, styles.imageFooterIconBookmark]} source={bookmark} />
+            </View>
+
+            <View style={styles.likesContainer}>
+                <View style={[styles.likesProfileImageContainer, styles.likes1]}>
+                    <Image style={styles.likesProfileImage} source={props.profileImage} />
+                </View>
+                <View style={[styles.likesProfileImageContainer, styles.likes2]}>
+                    <Image style={styles.likesProfileImage} source={props.profileImage} />
+                </View>
+                <View style={[styles.likesProfileImageContainer, styles.likes3]}>
+                    <Image style={styles.likesProfileImage} source={props.profileImage} />
+                </View>
+
+                <View style={styles.likedByTextContainer}>
+                    <Text style={styles.likedByText}>Liked by <Text style={[styles.boldText, styles.likedByText]}>subwaydude_</Text> and <Text style={[styles.boldText, styles.likedByText]}>18 others</Text></Text>
+                </View>
             </View>
 
             <View style={styles.comment}>
-                <Text>Comment</Text>
+                <Text style={styles.commentText}><Text style={[styles.boldText, styles.commentText]}>{props.username}</Text> {props.comment}</Text>
             </View>
 
             <View style={styles.addComment}>
-                <Text>add comment</Text>
+                <View style={styles.UserImageContainer}>
+                    <Image style={styles.UserImage} source={props.addCommentImage}/>
+                </View>
+                <TextInput placeholder="Add a comment..."/>
             </View>
 
-            <View style={styles.timeAgo}>
-                <Text>Time added</Text>
-            </View>
+            <Text style={styles.timeAgo}>{props.timePosted}</Text>
+
         </View>
     );
 }
@@ -42,32 +76,163 @@ const styles = StyleSheet.create({
     },
 
     heading: {
-        backgroundColor: 'lightblue',
-        height: 50
+        height: 45,
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+
+    profileImageContainer: {
+        height: 30,
+        width: 30,
+        borderRadius: 100,
+        margin: 10,
+        position: 'relative',
+        overflow: 'hidden'
+    },
+
+    profileImage: {
+        resizeMode: 'contain',
+        height: 35,
+        position: 'absolute',
+        left: -260
+    },
+
+    headingText: {
+        marginRight: 'auto'
+    },
+
+    headingUsername: {
+        fontSize: 12,
+        fontWeight: '500',
+        lineHeight: 13,
+        color: 'black'
+    },
+
+    headingLocation: {
+        fontSize: 11,
+        lineHeight: 12,
+        color: 'black'
+    },
+
+    menuIcon: {
+        resizeMode: 'contain',
+        width: 20,
+        margin: 10,
+        tintColor: 'grey'
     },
 
     imageContainer: {
         height: screenWidth,
-        backgroundColor: 'orangered'
+        alignItems: 'center'
     },
 
-    likes: {
+    image: {
+        resizeMode: 'contain',
+        height: '100%'
+    },
+
+    imageFooter: {
         height: 40,
-        backgroundColor: 'pink'
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+
+    imageFooterIcon: {
+        resizeMode: 'contain',
+        width: 25,
+        marginLeft: 10
+    },
+
+    imageFooterIconBookmark: {
+        marginLeft: 'auto',
+        marginRight: 10
+    },
+
+    likesContainer: {
+        height: 25,
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+
+    likesProfileImageContainer: {
+        height: 20,
+        width: 20,
+        backgroundColor: 'red',
+        borderRadius: 100,
+        borderWidth: 1,
+        borderColor: '#FFFFFF',
+        marginRight: -8,
+        alignItems: 'center',
+        overflow: 'hidden'
+    },
+
+    likes1: {
+        zIndex: 10,
+        marginLeft: 10
+    },
+
+    likes2: {
+        zIndex: 5
+    },
+
+    likes3: {
+
+    },
+
+    likesProfileImage: {
+        resizeMode: 'contain',
+        height: '100%'
+    },
+
+    likedByTextContainer: {
+        marginLeft: 15
+    },
+
+    likedByText: {
+        color: 'black',
+        fontSize: 11,
+        lineHeight: 12
+    },
+
+    boldText: {
+        fontWeight: '500'
     },
 
     comment: {
-        height: 50,
-        backgroundColor: 'green'
+        marginLeft: 10,
+        marginRight: 10
+    },
+
+    commentText: {
+        fontSize: 11,
+        color: 'black'
     },
 
     addComment: {
-        height: 50,
-        backgroundColor: 'yellow'
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+
+    UserImageContainer: {
+        height: 25,
+        width: 25,
+        borderRadius: 100,
+        marginLeft: 10,
+        marginRight: 5,
+        alignItems: 'center',
+        overflow: 'hidden'
+    },
+
+    UserImage: {
+        resizeMode: 'contain',
+        height: '100%'
     },
 
     timeAgo: {
-        height: 20,
-        backgroundColor: 'purple'
+        marginLeft: 10,
+        fontSize: 8,
+        lineHeight: 8,
+        marginTop: -5,
+        textTransform: 'uppercase'
     }
 })
