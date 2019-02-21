@@ -86,15 +86,13 @@ const styles = StyleSheet.create({
         width: 30,
         borderRadius: 100,
         margin: 10,
-        position: 'relative',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        alignItems: 'center'
     },
 
     profileImage: {
         resizeMode: 'contain',
-        height: 35,
-        position: 'absolute',
-        left: -260
+        height: 35
     },
 
     headingText: {
@@ -157,7 +155,6 @@ const styles = StyleSheet.create({
     likesProfileImageContainer: {
         height: 20,
         width: 20,
-        backgroundColor: 'red',
         borderRadius: 100,
         borderWidth: 1,
         borderColor: '#FFFFFF',
