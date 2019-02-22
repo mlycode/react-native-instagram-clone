@@ -16,6 +16,6 @@ export default class ProfilePage extends Component {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: "lightblue",
-        flex: 10
+        flex: 15
     }
 })

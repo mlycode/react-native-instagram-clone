@@ -34,18 +34,20 @@ const styles = StyleSheet.create({
         backgroundColor: '#FAFAFA',
         elevation: 8,
         alignItems: 'center',
-        justifyContent: 'flex-start'
+        justifyContent: 'flex-start',
+        paddingTop: 4
     },
 
     logo: {
         resizeMode: 'contain',
-        width: '25%',
+        width: '20%',
         marginRight: 'auto'
     },
 
     icon: {
         resizeMode: 'contain',
-        width: '7%',
-        margin: 10
+        width: 25,
+        margin: 10,
+        marginTop: 4
     }
 })
