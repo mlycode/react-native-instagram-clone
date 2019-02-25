@@ -6,6 +6,14 @@ import plusIcon from "../assets/icons/plus.png";
 import gridIcon from "../assets/icons/grid.png";
 
 import img1 from "../assets/images/testimage.jpg";
+import img2 from "../assets/images/ti2.jpg";
+import img3 from "../assets/images/ti3.jpg";
+import img4 from "../assets/images/ti4.jpg";
+import img5 from "../assets/images/ti5.jpg";
+import img6 from "../assets/images/ti6.jpg";
+import img7 from "../assets/images/ti7.jpg";
+import img8 from "../assets/images/ti8.jpg";
+import img9 from "../assets/images/ti9.jpg";
 
 export default class ProfilePage extends Component {
     state = {
@@ -13,7 +21,7 @@ export default class ProfilePage extends Component {
             username: 'michaelmly',
             bio: 'camera . travel',
             profilePicture: profilePicture,
-            pictures: [img1, img1, img1, img1, img1, img1, img1, img1, img1, img1, img1]
+            pictures: [img1, img2, img3, img4, img5, img6, img7, img8, img9, img5, img2]
         }
     }
 
@@ -231,7 +239,7 @@ const styles = StyleSheet.create({
     },
 
     image: {
-        resizeMode: 'contain',
-        height: '100%'
+        height: '100%',
+        width: '100%'
     }
 })
