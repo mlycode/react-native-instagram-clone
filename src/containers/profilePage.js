@@ -1,8 +1,21 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ScrollView, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Dimensions, Image, TouchableNativeFeedback } from 'react-native';
 
+import profilePicture from "../assets/images/profileimage.jpg";
+import plusIcon from "../assets/icons/plus.png";
+import gridIcon from "../assets/icons/grid.png";
+
+import img1 from "../assets/images/testimage.jpg";
 
 export default class ProfilePage extends Component {
+    state = {
+        user: {
+            username: 'michaelmly',
+            bio: 'camera . travel',
+            profilePicture: profilePicture,
+            pictures: [img1, img1, img1, img1, img1, img1, img1, img1, img1, img1, img1]
+        }
+    }
 
     render() {
         return (
@@ -10,51 +23,62 @@ export default class ProfilePage extends Component {
             <View style={styles.container}>
                 <ScrollView>
                     <View style={styles.profileInfo}>
-                        <Text>Profile follows</Text>
+
+                        <View style={styles.pictureStoryContainer}>
+                            <View style={styles.profilePictureContainer}>
+                                <Image style={styles.profilePicture} source={this.state.user.profilePicture} />
+                            </View>
+                            <View style={styles.plusIconContainer}>
+                                <Image style={styles.plusIcon} source={plusIcon} />
+                            </View>
+                        </View>
+
+                        <View style={styles.profileStatsEditContainer}>
+                            <View style={styles.profileStatContainer}>
+                                <View style={styles.profileStat}>
+                                    <Text style={[styles.boldText, styles.blackText, styles.largeFont]}>11</Text>
+                                    <Text>posts</Text>
+                                </View>
+                                <View style={styles.profileStat}>
+                                    <Text style={[styles.boldText, styles.blackText, styles.largeFont]}>11m</Text>
+                                    <Text>Followers</Text>
+                                </View>
+                                <View style={styles.profileStat}>
+                                    <Text style={[styles.boldText, styles.blackText, styles.largeFont]}>11</Text>
+                                    <Text>Following</Text>
+                                </View>
+                            </View>
+
+                            <TouchableNativeFeedback>
+                                <View style={styles.profileEditButton}>
+                                    <Text style={styles.buttonText}>Edit Profile</Text>
+                                </View>
+                            </TouchableNativeFeedback>
+
+                        </View>
+
                     </View>
 
                     <View style={styles.profileBio}>
-                        <Text>Bio text</Text>
+                        <Text style={styles.profileBioUsername}>{this.state.user.username}</Text>
+                        <Text style={styles.profileBioText}>{this.state.user.bio}</Text>
                     </View>
 
                     <View style={styles.menuBar}>
-                        <Text>menu bar</Text>
+                        <Image style={[styles.menuIcon, {tintColor: '#4c9ef7'}]} source={gridIcon}/>
+                        <Image style={[styles.menuIcon]} source={gridIcon}/>
+                        <Image style={[styles.menuIcon]} source={gridIcon}/>
                     </View>
 
                     <View style={styles.imageContainer}>
-                        <View style={styles.images}>
 
-                        </View>
-                        <View style={styles.images}>
-
-                        </View>
-                        <View style={styles.images}>
-
-                        </View>
-                        <View style={styles.images}>
-
-                        </View>
-                        <View style={styles.images}>
-
-                        </View>
-                        <View style={styles.images}>
-
-                        </View>
-                        <View style={styles.images}>
-
-                        </View>
-                        <View style={styles.images}>
-
-                        </View>
-                        <View style={styles.images}>
-
-                        </View>
-                        <View style={styles.images}>
-
-                        </View>
-                        <View style={styles.images}>
-
-                        </View>
+                        {this.state.user.pictures.map((picture, i) => {
+                            return (
+                                <View style={styles.images} key={i}>
+                                    <Image style={styles.image} source={picture}/>
+                                </View>
+                            )
+                        })}
 
                     </View>
                 </ScrollView>
@@ -69,28 +93,130 @@ let screenWidth = Dimensions.get('window').width;
 let screenHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
+    boldText: {
+        fontWeight: '500'
+    },
+
+    blackText: {
+        color: 'black'
+    },
+    
+    largeFont: {
+        fontSize: 16
+    },
+
     container: {
         backgroundColor: "#FFFFFF",
         flex: 15
     },
 
     profileInfo: {
-        height: 100,
-        backgroundColor: 'pink'
+        flexDirection: 'row',
+        padding: 10,
+        paddingTop: 20,
+        paddingBottom: 20
+    },
+
+    pictureStoryContainer: {
+        position: 'relative',
+        marginRight: 10
+    },
+
+    profilePictureContainer: {
+        height: 75,
+        width: 75,
+        borderRadius: 100,
+        alignItems: 'center',
+        overflow: 'hidden'
+    },
+
+    profilePicture: {
+        resizeMode: 'contain',
+        height: '100%'
+    },
+
+    plusIconContainer: {
+        height: 20,
+        width: 20,
+        borderRadius: 100,
+        backgroundColor: '#4c9ef7',
+        position: 'absolute',
+        left: 60,
+        bottom: -1,
+        borderWidth: 1,
+        borderColor: '#FFFFFF',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+
+    plusIcon: {
+        resizeMode: 'contain',
+        height: '75%',
+        tintColor: '#FFFFFF'
+    },
+
+    profileStatsEditContainer: {
+        flex: 1,
+        justifyContent: 'flex-start'
+    },
+
+    profileStatContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        marginBottom: 10
+    },
+
+    profileStat: {
+        alignItems: 'center'
+    },
+
+    profileEditButton: {
+        alignItems: 'center',
+        marginLeft: 10,
+        marginRight: 10,
+        padding: 3,
+        borderWidth: 1,
+        borderColor: '#ECECEC',
+        borderRadius: 5
+    },
+
+    buttonText: {
+        color: 'black',
+        fontSize: 12
     },
 
     profileBio: {
-        height: 100,
-        backgroundColor: 'lightblue'
+        padding: 10
+    },
+
+    profileBioUsername: {
+        color: 'black',
+        fontWeight: '500',
+        fontSize: 14
+    },
+
+    profileBioText: {
+        color: 'black',
+        fontSize: 12
     },
 
     menuBar: {
-        height: 50,
-        backgroundColor: 'lightgreen'
+        height: 45,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        borderTopWidth: 1,
+        borderBottomWidth: 1,
+        borderColor: '#ECECEC'
+    },
+
+    menuIcon: {
+        resizeMode: 'contain',
+        height: '50%',
+        tintColor: 'grey'
     },
 
     imageContainer: {
-        backgroundColor: 'red',
         flexDirection: 'row',
         flexWrap: 'wrap'
     },
@@ -98,7 +224,14 @@ const styles = StyleSheet.create({
     images: {
         width: screenWidth / 3 - 2,
         height: screenWidth / 3,
-        backgroundColor: 'blue',
-        margin: 1
+        margin: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        overflow: 'hidden'
+    },
+
+    image: {
+        resizeMode: 'contain',
+        height: '100%'
     }
 })
