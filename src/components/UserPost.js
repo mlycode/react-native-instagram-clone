@@ -87,12 +87,13 @@ const styles = StyleSheet.create({
         borderRadius: 100,
         margin: 10,
         overflow: 'hidden',
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent: 'center'
     },
 
     profileImage: {
-        resizeMode: 'contain',
-        height: 35
+        height: '100%',
+        width: '100%'
     },
 
     headingText: {
@@ -160,7 +161,8 @@ const styles = StyleSheet.create({
         borderColor: '#FFFFFF',
         marginRight: -8,
         alignItems: 'center',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        justifyContent: 'center'
     },
 
     likes1: {
@@ -177,8 +179,8 @@ const styles = StyleSheet.create({
     },
 
     likesProfileImage: {
-        resizeMode: 'contain',
-        height: '100%'
+        height: '100%',
+        width: '100%'
     },
 
     likedByTextContainer: {
